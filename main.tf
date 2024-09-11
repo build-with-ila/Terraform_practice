@@ -14,11 +14,11 @@ terraform{
 provider "aws"{
     region="ap-south-1"
 }
-module "aws-instance"{
+module "ec2_instance" {
     source = "./modules/ec2_instance"
-    ami_value = "ami-0522ab6e1ddcc7055"
-    instance_type_value = "t2.micro"
-    subnet_id_value = "subnet-019ea91ed9b5252e7"
+    ami_value = var.ami_val
+    instance_type_value = var.instance_type_val
+    subnet_id_value = var.subnet_id_val
 }
 resource "aws_s3_bucket" "s3_bucket" {
   bucket = "iladb-table" # change this
